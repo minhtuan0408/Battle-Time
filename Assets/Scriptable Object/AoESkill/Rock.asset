@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0a6289c37417a542b66643cbdcb4195, type: 3}
+  m_Name: Rock
+  m_EditorClassIdentifier: 
+  skillName: Rock
+  SkillPrefab: {fileID: 4307932131716508877, guid: eae6acaf93978244d8df15c43bcf8e38, type: 3}
+  type: 1
+  info:
+  - level: 1
+    damage: 30
+    cooldown: 5
+    radius: 1
+    range: 1
+    ObjectCount: 1
+    description: 
+  - level: 2
+    damage: 30
+    cooldown: 5
+    radius: 1
+    range: 1
+    ObjectCount: 2
+    description: 
+  - level: 3
+    damage: 30
+    cooldown: 5
+    radius: 1
+    range: 1
+    ObjectCount: 2
+    description: 
+  - level: 4
+    damage: 30
+    cooldown: 5
+    radius: 1
+    range: 1
+    ObjectCount: 3
+    description: 
+  - level: 5
+    damage: 30
+    cooldown: 5
+    radius: 1
+    range: 1
+    ObjectCount: 5
+    description: 

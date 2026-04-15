@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 196a4269151c1524d8fc1ed67ae93529, type: 3}
+  m_Name: Regan Skill
+  m_EditorClassIdentifier: 
+  skillName: Regan
+  SkillPrefab: {fileID: 6980344348449769369, guid: dbac382669511664b9869e3b055a1c2f, type: 3}
+  type: 3
+  info:
+  - level: 1
+    healAmount: 5
+    interval: 30
+    description: "H\u1ED3i m\xE1u m\u1ED7i 30s\n+ 5 HP/s"
+  - level: 2
+    healAmount: 8
+    interval: 30
+    description: '+ 8 HP/s '
+  - level: 3
+    healAmount: 8
+    interval: 20
+    description: "Gi\u1EA3m th\u1EDDi gian h\u1ED3i m\xE1u\n20s"
+  - level: 4
+    healAmount: 15
+    interval: 20
+    description: + 15 HP/s
+  - level: 5
+    healAmount: 20
+    interval: 15
+    description: "+ 20 HP/s\ngi\u1EA3m th\u1EDDi gian h\u1ED3i m\xE1u c\xF2n 15s"

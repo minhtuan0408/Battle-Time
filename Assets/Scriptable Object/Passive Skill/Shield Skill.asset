@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00142a61b6bacef4485776471e837f0b, type: 3}
+  m_Name: Shield Skill
+  m_EditorClassIdentifier: 
+  skillName: Shield
+  SkillPrefab: {fileID: 8925257321223131305, guid: 29ba8ddb86f3dfa49ba7bd5c9d2221fd, type: 3}
+  type: 3
+  info:
+  - level: 1
+    maxShield: 1
+    shieldPerCast: 1
+    cooldown: 45
+    description: "M\u1ED7i 30 gi\xE2y s\u1EBD sinh ra 1 l\u1EDBp khi\xEAn ch\u1EB7n
+      dame 1 l\u1EA7n"
+  - level: 2
+    maxShield: 2
+    shieldPerCast: 1
+    cooldown: 45
+    description: "T\xEDch lu\u1EF9 t\u1ED1i \u0111a 2 khi\xEAn"
+  - level: 3
+    maxShield: 3
+    shieldPerCast: 1
+    cooldown: 45
+    description: "T\xEDch lu\u1EF9 t\u1ED1i \u0111a 3 khi\xEAn"
+  - level: 4
+    maxShield: 3
+    shieldPerCast: 1
+    cooldown: 30
+    description: "Gi\u1EA3m th\u1EDDi gian h\u1ED3i chi\xEAu c\xF2n 30s"
+  - level: 5
+    maxShield: 4
+    shieldPerCast: 1
+    cooldown: 30
+    description: "T\xEDch lu\u1EF9 t\u1ED1i \u0111a 4 khi\xEAn"

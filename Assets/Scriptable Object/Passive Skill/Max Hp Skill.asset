@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f911cf51f4df3124da9699991be72d1f, type: 3}
+  m_Name: Max Hp Skill
+  m_EditorClassIdentifier: 
+  skillName: MaxHp
+  SkillPrefab: {fileID: 5427320872822377291, guid: 61e06699c3fddea4a8da1df70234bad0, type: 3}
+  type: 3
+  info:
+  - level: 1
+    hpIncrease: 10
+    description: "M\u1EDF kho\xE1 gi\u1EDBi h\u1EA1n HP c\u1EE7a b\u1EA1n\n+ 10 HP"
+  - level: 2
+    hpIncrease: 20
+    description: + 20 HP
+  - level: 3
+    hpIncrease: 35
+    description: + 35 HP
+  - level: 4
+    hpIncrease: 45
+    description: + 45 HP
+  - level: 5
+    hpIncrease: 50
+    description: + 60 HP
