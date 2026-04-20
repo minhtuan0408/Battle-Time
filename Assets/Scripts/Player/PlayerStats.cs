@@ -17,7 +17,7 @@ public class PlayerStats : MonoBehaviour, IDamageable
 
 	public int currentExp = 0;
 	public int expToNextLevel = 10;
-
+	public HitScreenUI hitUI;
 
 	public event Action<int, int> OnHealthChanged;
 	public event Action<int, int, int> OnLevelChanged;
@@ -47,7 +47,6 @@ public class PlayerStats : MonoBehaviour, IDamageable
 			}
 		}
 	}
-
 	public void TakeDamage(int damage)
 	{
 		if (!canDamage) return;
@@ -61,6 +60,7 @@ public class PlayerStats : MonoBehaviour, IDamageable
         }
         currentHealth = Mathf.Clamp(currentHealth - damage, 0, maxHealth);
 		OnHealthChanged?.Invoke(currentHealth, maxHealth);
+		hitUI.Trigger();
 		if (currentHealth <= 0)
 		{
 			Die();
@@ -69,12 +69,10 @@ public class PlayerStats : MonoBehaviour, IDamageable
 
 		canDamage = false; 
 	}
-
 	private void Die()
 	{
 		Debug.Log("Player chết");
 	}
-
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
 		if (collision.CompareTag("Enemy"))

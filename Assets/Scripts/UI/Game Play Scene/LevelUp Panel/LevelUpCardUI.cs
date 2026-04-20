@@ -37,7 +37,8 @@ public class LevelUpCardUI : MonoBehaviour, IPointerClickHandler
 	{
 		this.data = skill;
 		this.onClick = onClick;
-
+		if (icon != null)
+			icon.sprite= skill.image;
 		nameText.text = skill.skillName;
 		descText.text = skill.GetDescription(level);
 		levelText.text = "Level up : " + level;

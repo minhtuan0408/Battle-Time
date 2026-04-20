@@ -5,7 +5,7 @@ public abstract class BaseSkill : MonoBehaviour
 {
 	public string key;
 	public int level = 1;
-	public int maxLevel = 5;
+	public int maxLevel = 2;
 	[Header("Cooldown")]
 	public float cooldown = 1f;
 	protected float cooldownTimer;

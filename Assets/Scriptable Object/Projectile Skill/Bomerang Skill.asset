@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Bomerang Skill
   m_EditorClassIdentifier: 
   skillName: Bomerang
+  image: {fileID: 1151618141, guid: c78b59e1e63423f44a50e5458c4b624d, type: 3}
   SkillPrefab: {fileID: 3376339526047529080, guid: 51d0c883881990940bb4bb37b5c1df95, type: 3}
   type: 0
   info:

@@ -157,7 +157,7 @@ MonoBehaviour:
   attackCooldown: 1
   target: {fileID: 0}
   sprite: {fileID: 1333611881870341593}
-  separationRadius: 3
+  separationRadius: 1
   separationForce: 3
   enemyLayer:
     serializedVersion: 2

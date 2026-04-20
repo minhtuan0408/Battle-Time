@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 [CreateAssetMenu(menuName = "Skills/Projectile")]
 public class ProjectileSkillSO : SkillSO
 {
 	public List<ProjectileSkillSOLevel> info;
+	
 	public override string GetDescription(int level)
 	{
 		var data = info.Find(x => x.level == level);

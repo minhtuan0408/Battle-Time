@@ -32,6 +32,8 @@ public class PlayerCombat : MonoBehaviour
 
 			BaseSkill skillComponent = skills.Find(s => s.name == skillSO.skillName);
 			skillComponent?.LevelUp();
+
+			Debug.Log(skillComponent);
 		}
 		else
 		{
@@ -41,7 +43,7 @@ public class PlayerCombat : MonoBehaviour
 
 			GameObject newSkill = Instantiate(skillSO.SkillPrefab, transform);
 			BaseSkill skill = newSkill.GetComponent<BaseSkill>();
-
+			skill.name = skillSO.skillName;
 			skills.Add(skill);
 
 			skill.SetUpSkill(TargetFinder, Stats);

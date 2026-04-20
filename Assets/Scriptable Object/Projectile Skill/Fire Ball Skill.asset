@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Fire Ball Skill
   m_EditorClassIdentifier: 
   skillName: Fire Ball
+  image: {fileID: 21300000, guid: 083d8567681740547a0bca42d67f4bbf, type: 3}
   SkillPrefab: {fileID: 6310017275773159916, guid: fe1e2ca40c415f14a8a2235acc3a3faa, type: 3}
   type: 0
   info:
