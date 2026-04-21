@@ -21,6 +21,7 @@ public abstract class BaseEnemy : MonoBehaviour, IDamageable
 	float flipThreshold = 0.1f;
 	public LayerMask enemyLayer;
 
+	public ParticleSystem ParticleSystem;
 	public Action onDeath;
 	protected virtual void Awake()
 	{
@@ -112,8 +113,24 @@ public abstract class BaseEnemy : MonoBehaviour, IDamageable
 
 	protected virtual void Die()
 	{
-		OrbManager.Instance.SpawnOrb(transform.position, 5);
+		OrbManager.Instance.SpawnOrb(transform.position, 1);
 		onDeath?.Invoke();
+
+		StartCoroutine(DieRoutine());
+		sprite.enabled = false;
+
+	}
+
+	IEnumerator DieRoutine()
+	{
+		if (ParticleSystem != null)
+		{
+			ParticleSystem.transform.parent = null; // tách khỏi object để không bị destroy
+			ParticleSystem.Play();
+
+			yield return new WaitUntil(() => !ParticleSystem.IsAlive(true));
+		}
+
 		Destroy(gameObject);
 	}
 }

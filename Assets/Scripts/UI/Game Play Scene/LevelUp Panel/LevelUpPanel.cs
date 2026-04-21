@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+
 using UnityEngine;
 
 public class LevelUpPanel : MonoBehaviour
@@ -48,19 +49,50 @@ public class LevelUpPanel : MonoBehaviour
 	}
 	List<SkillSO> GetRandomSkills(int count)
 	{
+		List<SkillSO> pool = new();
+
+		bool hasActive = HasAnyActiveSkill();
+
+		foreach (var skill in allSkills)
+		{
+			if (IsSkillMaxed(skill))
+				continue;
+
+			if (!hasActive && skill.type != SkillType.Passive)
+				continue;
+
+			pool.Add(skill);
+		}
+
+		// fallback: nếu pool rỗng (edge case)
+		if (pool.Count == 0)
+			pool = new List<SkillSO>(allSkills);
 		List<SkillSO> result = new();
-		List<SkillSO> temp = new(allSkills);
 
 		for (int i = 0; i < count; i++)
 		{
-			if (temp.Count == 0) break;
+			if (pool.Count == 0) break;
 
-			int index = UnityEngine.Random.Range(0, temp.Count);
-			result.Add(temp[index]);
-			temp.RemoveAt(index);
+			int index = UnityEngine.Random.Range(0, pool.Count);
+			result.Add(pool[index]);
+			pool.RemoveAt(index);
 		}
 
 		return result;
 	}
+	bool IsSkillMaxed(SkillSO skill)
+	{
+		var instance = playerCombat.GetSkill(skill);
+		return instance != null && instance.level >= 5;
+	}
 
+	bool HasAnyActiveSkill()
+	{
+		foreach (var s in playerCombat.ownedSkills)
+		{
+			if (s.data.type != SkillType.Passive)
+				return true;
+		}
+		return false;
+	}
 }
