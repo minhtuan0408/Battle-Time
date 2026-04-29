@@ -13,44 +13,44 @@ MonoBehaviour:
   m_Name: Bomerang Skill
   m_EditorClassIdentifier: 
   skillName: Bomerang
-  image: {fileID: 1151618141, guid: c78b59e1e63423f44a50e5458c4b624d, type: 3}
+  image: {fileID: 21300000, guid: b306cab070c333c47be1d39deab2aef6, type: 3}
   SkillPrefab: {fileID: 3376339526047529080, guid: 51d0c883881990940bb4bb37b5c1df95, type: 3}
   type: 0
   info:
   - level: 1
-    damage: 5
-    cooldown: 1
+    damage: 10
+    cooldown: 2.5
     range: 5
     projectileCount: 1
-    speed: 15
+    speed: 12
     description: "B\u1EAFn bomerang v\u1EC1 ph\xEDa k\u1EBB \u0111\u1ECBch"
   - level: 2
-    damage: 7
-    cooldown: 1
+    damage: 10
+    cooldown: 2.5
     range: 0
-    projectileCount: 2
-    speed: 15
+    projectileCount: 3
+    speed: 12
     description: '+ 1 bomerang
 
       + 5 dame'
   - level: 3
-    damage: 30
-    cooldown: 0.8
+    damage: 15
+    cooldown: 2.5
     range: 5
     projectileCount: 3
-    speed: 15
+    speed: 12
     description: "+ 1 bomerang\nt\u0103ng speed 0.8s\n"
   - level: 4
-    damage: 5
-    cooldown: 0.8
-    range: 5
-    projectileCount: 4
-    speed: 15
-    description: + 1 bomerang
-  - level: 5
-    damage: 5
-    cooldown: 0.6
+    damage: 10
+    cooldown: 2.5
     range: 5
     projectileCount: 5
-    speed: 15
+    speed: 12
+    description: + 1 bomerang
+  - level: 5
+    damage: 10
+    cooldown: 2.5
+    range: 5
+    projectileCount: 7
+    speed: 12
     description: "+ 1 bomerang\nt\u0103ng speed 0.6s\n"

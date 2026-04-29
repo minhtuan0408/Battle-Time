@@ -45,7 +45,6 @@ public class OrbManager : MonoBehaviour
 		attractingOrbs.Remove(orb);
 	}
 
-	// 🔥 spawn orb (gọi từ enemy)
 	public void SpawnOrb(Vector2 pos, int value)
 	{
 		Orb orb = GetOrb();
@@ -64,14 +63,12 @@ public class OrbManager : MonoBehaviour
 			return Instantiate(orbPrefab, transform);
 		}
 	}
-
-	// 👉 khi orb disable thì tự quay lại pool
 	public void ReturnToPool(Orb orb)
 	{
+		orb.gameObject.SetActive(false);
 		pool.Enqueue(orb);
 	}
 
-	// 👉 gọi khi player vào vùng hút
 	public void AttractNearby(Vector2 playerPos, float radius)
 	{
 		foreach (var orb in allOrbs)
@@ -81,16 +78,24 @@ public class OrbManager : MonoBehaviour
 			if (Vector2.Distance(playerPos, orb.transform.position) <= radius)
 			{
 				orb.StartAttract(player);
-				attractingOrbs.Add(orb);
+				if (!attractingOrbs.Contains(orb))
+				{
+					attractingOrbs.Add(orb);
+				}
 			}
 		}
 	}
 
 	private void Update()
 	{
-		for (int i = 0; i < attractingOrbs.Count; i++)
+		for (int i = attractingOrbs.Count - 1; i >= 0; i--)
 		{
 			attractingOrbs[i].Tick();
 		}
+
+		//for (int i = 0; i < attractingOrbs.Count; i++)
+		//{
+		//	attractingOrbs[i].Tick(); tìm hiểu thêm
+		//}
 	}
 }

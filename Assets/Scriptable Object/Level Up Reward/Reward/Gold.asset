@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Gold
   m_EditorClassIdentifier: 
   skillName: Gold
-  image: {fileID: 0}
+  image: {fileID: 21300000, guid: 115274d5418423a48992de4baf482899, type: 3}
   info: Gold
   value: 500
   Type: 0

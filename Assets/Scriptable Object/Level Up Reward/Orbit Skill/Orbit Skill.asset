@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Orbit Skill
   m_EditorClassIdentifier: 
   skillName: Orbit Magic
-  image: {fileID: -189283470, guid: 16b57d60a8546c24e9577f1f5502d8ce, type: 3}
+  image: {fileID: 21300000, guid: 7d4801b82c457bc4e8de4629f27d2621, type: 3}
   SkillPrefab: {fileID: 4472478124307630102, guid: c63f374776f98d44ea06463dc5a54b17, type: 3}
   type: 2
   info:

@@ -116,10 +116,9 @@ public class PlayerStats : MonoBehaviour, IDamageable
 
 	public void Heal(int amount)
 	{
-		currentHealth += amount;
-		Debug.Log("Healing");
-		if (currentHealth > maxHealth)
-			currentHealth = maxHealth;
+		currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
+
+		OnHealthChanged?.Invoke(currentHealth, maxHealth);
 	}
 	public void ShieldOn(int amount)
 	{

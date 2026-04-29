@@ -20,7 +20,6 @@ public class Orb : MonoBehaviour
 		if (OrbManager.Instance != null)
 		{
 			OrbManager.Instance.Unregister(this);
-			OrbManager.Instance.ReturnToPool(this);
 		}
 	}
 
@@ -61,6 +60,6 @@ public class Orb : MonoBehaviour
 	void Collect()
 	{
 		target.GetComponent<PlayerStats>().AddExp(value);
-		gameObject.SetActive(false); 
+		OrbManager.Instance.ReturnToPool(this); // 👉 gọi tại đây
 	}
 }

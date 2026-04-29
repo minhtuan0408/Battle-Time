@@ -18,7 +18,15 @@ public class WaveManager : MonoBehaviour
 	{
 		waves = new List<WaveData>(levelData.waves);
 	}
+	void OnEnable()
+	{
+		BaseEnemy.OnAnyEnemyDied += OnEnemyDead;
+	}
 
+	void OnDisable()
+	{
+		BaseEnemy.OnAnyEnemyDied -= OnEnemyDead;
+	}
 	public IEnumerator RunWaves()
 	{
 		while (currentWave < waves.Count)
@@ -54,7 +62,6 @@ public class WaveManager : MonoBehaviour
 				GameObject prefab = GetRandomEnemy(wave.enemies);
 				GameObject enemy = spawn.Spawn(prefab, wave.spawnType);
 
-				RegisterEnemy(enemy);
 				spawnedCount++;
 			}
 
@@ -65,24 +72,16 @@ public class WaveManager : MonoBehaviour
 			foreach (GameObject bossPrefab in wave.bossPrefab)
 			{
 				GameObject boss = spawn.Spawn(bossPrefab, wave.spawnType);
-				RegisterEnemy(boss);
 			}
 		}
 	}
-	void OnEnemyDead()
+	void OnEnemyDead(BaseEnemy enemy)
 	{
 		enemiesAlive--;
-	}
-	void RegisterEnemy(GameObject enemy)
-	{
-		enemiesAlive++;
 
-		BaseEnemy e = enemy.GetComponent<BaseEnemy>();
-		if (e != null)
-		{
-			e.onDeath += OnEnemyDead;
-		}
+
 	}
+
 	GameObject GetRandomEnemy(EnemySpawnData[] enemies)
 	{
 		float totalWeight = 0f;

@@ -49,4 +49,6 @@ MonoBehaviour:
   cooldown: 0.5
   autoCast: 1
   projectilePrefab: {fileID: 7473157579019702551, guid: e06fb3ab9b369434a833d976d4a07a6d, type: 3}
+  pattern: 2
+  coneAngle: 60
   dataSkill: {fileID: 11400000, guid: 4a874ee35a501a14cbbcf8cdb8fa0554, type: 2}

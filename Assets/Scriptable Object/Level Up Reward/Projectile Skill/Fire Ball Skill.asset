@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Fire Ball Skill
   m_EditorClassIdentifier: 
   skillName: Fire Ball
-  image: {fileID: 21300000, guid: 083d8567681740547a0bca42d67f4bbf, type: 3}
+  image: {fileID: 21300000, guid: d218b9a20a2cbd2428b2c76ed4367673, type: 3}
   SkillPrefab: {fileID: 6310017275773159916, guid: fe1e2ca40c415f14a8a2235acc3a3faa, type: 3}
   type: 0
   info:
@@ -22,34 +22,34 @@ MonoBehaviour:
     cooldown: 2
     range: 5
     projectileCount: 1
-    speed: 10
+    speed: 15
     description: "M\u1EDF kho\xE1 kh\u1EA3 n\u0103ng b\u1EAFn c\u01A1 b\u1EA3n :\nAtk
       : 1\nCooldown : 0.8\nS\u1ED1 l\u01B0\u1EE3ng : 1 -> 2"
   - level: 2
     damage: 30
     cooldown: 2
     range: 5
-    projectileCount: 2
-    speed: 10
+    projectileCount: 3
+    speed: 15
     description: "+ 1 c\u1EA7u l\u1EEDa\n0.7 speed"
   - level: 3
     damage: 30
     cooldown: 1.5
     range: 5
-    projectileCount: 3
-    speed: 10
+    projectileCount: 5
+    speed: 15
     description: "+ 1 c\u1EA7u l\u1EEDa\n0.6 speed"
   - level: 4
     damage: 3
     cooldown: 1
     range: 5
-    projectileCount: 4
-    speed: 10
+    projectileCount: 7
+    speed: 15
     description: "+ 1 c\u1EA7u l\u1EEDa\n0.6 speed"
   - level: 5
     damage: 3
     cooldown: 1
     range: 5
-    projectileCount: 5
-    speed: 10
+    projectileCount: 11
+    speed: 15
     description: "+ 1 c\u1EA7u l\u1EEDa\n0.5 speed"

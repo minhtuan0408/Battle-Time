@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Skin x2
   m_EditorClassIdentifier: 
   rewardName: 'Skin '
-  icon: {fileID: 0}
-  value: 0
+  icon: {fileID: 21300000, guid: f90be46af1e8f1949811659ffdcb45d8, type: 3}
+  value: 2

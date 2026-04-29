@@ -21,8 +21,10 @@ public abstract class BaseEnemy : MonoBehaviour, IDamageable
 	float flipThreshold = 0.1f;
 	public LayerMask enemyLayer;
 
-	public Action onDeath;
+	public static event Action<BaseEnemy> OnAnyEnemyDied;
 	private bool isDead = false;
+
+
 	protected virtual void Awake()
 	{
 		mpb = new MaterialPropertyBlock();
@@ -111,20 +113,19 @@ public abstract class BaseEnemy : MonoBehaviour, IDamageable
 
 	protected virtual void Die()
 	{
+		if (isDead) return;
+		isDead = true;
+
 		OrbManager.Instance.SpawnOrb(transform.position, 1);
-		onDeath?.Invoke();
+		OnAnyEnemyDied?.Invoke(this);
 
 		StartCoroutine(DieRoutine());
 		sprite.enabled = false;
-
 	}
 
 	IEnumerator DieRoutine()
 	{
-
 		yield return null;
-
-
 		Destroy(gameObject);
 	}
 }

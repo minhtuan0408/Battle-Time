@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Money x1000
   m_EditorClassIdentifier: 
   rewardName: Coin
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 115274d5418423a48992de4baf482899, type: 3}
   value: 1000

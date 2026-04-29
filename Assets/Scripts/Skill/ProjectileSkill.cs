@@ -7,6 +7,10 @@ public class ProjectileSkill : BaseSkill
 {
 	[SerializeField] private Projectile projectilePrefab;
 	private List<Projectile> pool = new List<Projectile>();
+	[Header("Pattern")]
+	public ShootPattern pattern;
+	[Header("Cone only")]
+	public float coneAngle = 60f;
 
 	[Header("Stats")]
 	int damage;
@@ -30,6 +34,23 @@ public class ProjectileSkill : BaseSkill
 
 		Vector2 mainDir = targetFinder.GetDirectionToNearestTarget(transform.position);
 
+		switch (pattern)
+		{
+			case ShootPattern.Straight:
+				ShootStraight(mainDir);
+				break;
+
+			case ShootPattern.Circle:
+				ShootCircle(count);
+				break;
+
+			case ShootPattern.Cone:
+				ShootCone(mainDir, count, coneAngle);
+				break;
+		}
+	}
+	void ShootStraight(Vector2 mainDir)
+	{
 		for (int i = 0; i < count; i++)
 		{
 			Vector2 dir = (i == 0)
@@ -39,7 +60,6 @@ public class ProjectileSkill : BaseSkill
 			SpawnProjectile(dir);
 		}
 	}
-
 	void SpawnProjectile(Vector2 dir)
 	{
 		Projectile proj = GetProjectile();
@@ -77,5 +97,41 @@ public class ProjectileSkill : BaseSkill
 		Projectile newProj = Instantiate(projectilePrefab);
 		pool.Add(newProj);
 		return newProj;
+	}
+
+	void ShootCone(Vector2 forward, int bulletCount, float angleRange)
+	{
+		if (bulletCount == 1)
+		{
+			SpawnProjectile(forward);
+			return;
+		}
+
+		float startAngle = -angleRange / 2f;
+		float angleStep = angleRange / (bulletCount - 1);
+
+		for (int i = 0; i < bulletCount; i++)
+		{
+			float angle = startAngle + angleStep * i;
+			Vector2 dir = RotateVector(forward, angle);
+			SpawnProjectile(dir);
+		}
+	}
+
+	void ShootCircle(int bulletCount)
+	{
+		float angleStep = 360f / bulletCount;
+
+		for (int i = 0; i < bulletCount; i++)
+		{
+			float angle = i * angleStep;
+
+			Vector2 dir = new Vector2(
+				Mathf.Cos(angle * Mathf.Deg2Rad),
+				Mathf.Sin(angle * Mathf.Deg2Rad)
+			);
+
+			SpawnProjectile(dir);
+		}
 	}
 }

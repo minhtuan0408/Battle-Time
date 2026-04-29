@@ -17,7 +17,7 @@ public abstract class BaseSkill : MonoBehaviour
 	protected virtual void Start()
 	{
 		cooldownTimer = cooldown;
-
+		Debug.Log(level);
 	}
 
 	public void SetUpSkill(TargetFinder targetFinder, PlayerStats stats) 
@@ -51,5 +51,10 @@ public abstract class BaseSkill : MonoBehaviour
 	}
 	public abstract void ApplyLevelData();
 }
-
+public enum ShootPattern
+{
+	Straight,   // 1 hướng
+	Circle,     // tỏa 360
+	Cone        // hình nón
+}
 

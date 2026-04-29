@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Heal
   m_EditorClassIdentifier: 
   skillName: Chickend
-  image: {fileID: 0}
-  info: 
-  value: 50
+  image: {fileID: 21300000, guid: ce4a3bd0ea0e21e4e8c3ed26f21eb284, type: 3}
+  info: + 100 HP
+  value: 100
   Type: 1

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Diamond x30
   m_EditorClassIdentifier: 
   rewardName: Diamond
-  icon: {fileID: 0}
+  icon: {fileID: 21300014, guid: 081f2ffeaaf158447a47b22a09f91b8a, type: 3}
   value: 30

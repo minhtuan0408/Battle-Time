@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Max Hp Skill
   m_EditorClassIdentifier: 
   skillName: MaxHp
+  image: {fileID: 0}
   SkillPrefab: {fileID: 5427320872822377291, guid: 61e06699c3fddea4a8da1df70234bad0, type: 3}
   type: 3
   info:

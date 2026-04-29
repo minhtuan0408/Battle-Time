@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Shield Skill
   m_EditorClassIdentifier: 
   skillName: Shield
+  image: {fileID: 0}
   SkillPrefab: {fileID: 8925257321223131305, guid: 29ba8ddb86f3dfa49ba7bd5c9d2221fd, type: 3}
   type: 3
   info:

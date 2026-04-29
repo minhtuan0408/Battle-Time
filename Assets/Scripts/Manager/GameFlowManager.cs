@@ -11,11 +11,25 @@ public class GameFlowManager : MonoBehaviour
 	public WaveManager waveManager;
 
 	public RewardPanel rewardPanel;
+	public UIGamePlayScene gamePlayScene;
 
 	int TotalDiamond;
 	int TotalGold;
-
+	int TotalEnemyKill;
 	int TotalTicket;
+
+	void OnEnable()
+	{
+		BaseEnemy.OnAnyEnemyDied += OnEnemyDied;
+	}
+	void OnDisable()
+	{
+		BaseEnemy.OnAnyEnemyDied -= OnEnemyDied;
+	}
+	void OnEnemyDied(BaseEnemy enemy)
+	{
+		AddEnemyKill(1);
+	}
 	void Start()
 	{
 		waveManager.onAllWavesCleared += OnGameWin;
@@ -59,5 +73,11 @@ public class GameFlowManager : MonoBehaviour
 		}
 		else 
 			TotalTicket += value;
+	}
+	public void AddEnemyKill(int value)
+	{
+		TotalEnemyKill += value;
+		if (gamePlayScene.EnemyKilled != null)
+			gamePlayScene.EnemyKilled.text = TotalEnemyKill.ToString();
 	}
 }

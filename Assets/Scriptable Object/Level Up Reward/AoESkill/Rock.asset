@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Rock
   m_EditorClassIdentifier: 
   skillName: Rock
-  image: {fileID: 21300000, guid: beb646249cba83748a3cba15c3f5bbc3, type: 3}
+  image: {fileID: 21300000, guid: 2de6daf9f660b4042885e5555971a673, type: 3}
   SkillPrefab: {fileID: 4307932131716508877, guid: eae6acaf93978244d8df15c43bcf8e38, type: 3}
   type: 1
   info:
