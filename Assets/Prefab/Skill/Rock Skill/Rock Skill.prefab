@@ -45,11 +45,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: rock
-  level: 1
   maxLevel: 5
   cooldown: 1
   autoCast: 1
   dataSkill: {fileID: 11400000, guid: 507ebf595a4390d4b89d1c85f88ecaa5, type: 2}
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
+  effectPrefab: {fileID: 2791370488251945131, guid: f7e01f27a09766e4184b3f5fc94fa370, type: 3}

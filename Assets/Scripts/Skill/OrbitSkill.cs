@@ -1,22 +1,37 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class OrbitSkill : BaseSkill
 {
-	public GameObject orbitPrefab;
 	public OrbitSkillSO dataSkill;
 
 	// 👉 runtime stat
 	float radius;
 	float angularSpeed;
 	float lifeTime;
-	float damage;
+	int damage;
 	int count;
 
 	private bool isActive = false;
 	private float activeTimer = 0f;
 	private List<GameObject> currentOrbits = new List<GameObject>();
+	float currentAngle = 0f;
+	[SerializeField] private OrbitProjectile orbitPrefab;
+	public OrbitProjectile[] pool = new OrbitProjectile[5];
 
+	protected override void Start()
+	{
+		base.Start();
+
+		for (int i = 0; i < pool.Length; i++)
+		{
+			pool[i] = Instantiate(orbitPrefab, transform);
+			pool[i].gameObject.SetActive(false);
+		}
+
+		Debug.Log("Orbit"+level);
+	}
 	protected override void Activate()
 	{
 		if (isActive) return;
@@ -34,6 +49,11 @@ public class OrbitSkill : BaseSkill
 		if (isActive)
 		{
 			activeTimer += Time.deltaTime;
+
+			// 👉 Skill tự quay
+			currentAngle += angularSpeed * Time.deltaTime;
+
+			UpdateOrbitPositions();
 
 			if (activeTimer >= lifeTime)
 			{
@@ -55,41 +75,34 @@ public class OrbitSkill : BaseSkill
 
 	private void SpawnOrbit(int count)
 	{
-		currentOrbits.Clear();
+		count = Mathf.Min(count, pool.Length);
 
-		float angleStep = 360f / count;
-
-		for (int i = 0; i < count; i++)
+		for (int i = 0; i < pool.Length; i++)
 		{
-			float angle = angleStep * i * Mathf.Deg2Rad;
+			if (i < count)
+			{
+				var orb = pool[i];
+				orb.gameObject.SetActive(true);
 
-			GameObject obj = Instantiate(orbitPrefab);
-
-			var orbit = obj.GetComponent<OrbitProjectile>();
-			orbit.Init(
-				targetStats.transform,
-				radius,
-				angularSpeed,
-				angle,
-				lifeTime,
-				(int)damage
-			);
-
-			currentOrbits.Add(obj);
+				orb.Init(transform, radius, 0f, damage);
+			}
+			else
+			{
+				pool[i].gameObject.SetActive(false);
+			}
 		}
+
+		currentAngle = 0f; // reset rotation
 	}
 
 	private void ClearOrbit()
 	{
-		foreach (var orb in currentOrbits)
+		for (int i = 0; i < pool.Length; i++)
 		{
-			if (orb != null)
-				orb.SetActive(false);
+			pool[i].gameObject.SetActive(false);
 		}
-		currentOrbits.Clear();
 	}
 
-	// ⭐ CORE
 	public override void ApplyLevelData()
 	{
 		var data = dataSkill.info.Find(x => x.level == level);
@@ -102,5 +115,17 @@ public class OrbitSkill : BaseSkill
 		count = Mathf.Max(1, data.projectileCount);
 
 		cooldown = data.cooldown;
+	}
+
+	private void UpdateOrbitPositions()
+	{
+		int activeCount = Mathf.Min(count, pool.Length);
+		float angleStep = 360f / activeCount;
+
+		for (int i = 0; i < activeCount; i++)
+		{
+			float angle = currentAngle + i * angleStep;
+			pool[i].SetAngle(angle * Mathf.Deg2Rad);
+		}
 	}
 }

@@ -78,9 +78,9 @@ public class PlayerStats : MonoBehaviour, IDamageable
 		if (collision.CompareTag("Enemy"))
 		{
 			TakeDamage(10);
-			Debug.Log("Player dính đạn");
+
 		}
-		Debug.Log("Chạm vào collider");
+
 
 	}
 

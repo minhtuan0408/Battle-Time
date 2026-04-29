@@ -45,9 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: fire_ball
-  level: 1
   maxLevel: 5
   cooldown: 0.5
   autoCast: 1
-  projectilePrefab: {fileID: 8477719694712143450, guid: e06fb3ab9b369434a833d976d4a07a6d, type: 3}
+  projectilePrefab: {fileID: 7473157579019702551, guid: e06fb3ab9b369434a833d976d4a07a6d, type: 3}
   dataSkill: {fileID: 11400000, guid: 4a874ee35a501a14cbbcf8cdb8fa0554, type: 2}

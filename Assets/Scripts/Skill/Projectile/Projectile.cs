@@ -1,15 +1,10 @@
 ﻿using System.Security.Cryptography;
 using UnityEngine;
 
-public abstract class Projectile : Poolable
+public abstract class Projectile : MonoBehaviour
 {
-	public override void OnDespawn()
-	{
-		base.OnDespawn();
 
-	}
-
-	protected float speed;
+	public float speed;
 	protected int damage;
 	protected float lifeTime;
 
@@ -40,7 +35,7 @@ public abstract class Projectile : Poolable
 
 	protected virtual void ReturnToPool()
 	{
-		ObjectPool.Instance.ReturnToPool(poolKey, this);
+		gameObject.SetActive(false);
 	}
 
 	protected virtual void OnTriggerEnter2D(Collider2D collision)

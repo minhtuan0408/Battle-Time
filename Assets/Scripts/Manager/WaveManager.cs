@@ -46,17 +46,6 @@ public class WaveManager : MonoBehaviour
 
 		while (spawnedCount < wave.totalSpawnCount)
 		{
-			// spawn boss
-			//if (wave.hasBoss && !bossSpawned && spawnedCount >= wave.bossSpawnAtCount)
-			//{
-			//	foreach (GameObject bossPrefab in wave.bossPrefab)
-			//	{
-			//		GameObject boss = spawn.Spawn(bossPrefab, wave.spawnType);
-			//		RegisterEnemy(boss);
-			//	}
-			//}
-
-			// spawn theo batch
 			for (int i = 0; i < wave.spawnPerBatch; i++)
 			{
 				if (spawnedCount >= wave.totalSpawnCount)
@@ -71,8 +60,6 @@ public class WaveManager : MonoBehaviour
 
 			yield return new WaitForSeconds(wave.spawnInterval);
 		}
-
-		// fallback boss
 		if (wave.hasBoss && !bossSpawned)
 		{
 			foreach (GameObject bossPrefab in wave.bossPrefab)

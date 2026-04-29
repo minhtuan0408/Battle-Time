@@ -44,10 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abe91ce369b34a7478e5d2d7085baf77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  key: 
+  key: orbit_magic
   level: 1
   maxLevel: 5
   cooldown: 5
   autoCast: 1
-  orbitPrefab: {fileID: 4550508989561021773, guid: c0c9ed287eb458d4297c292eefd9d784, type: 3}
   dataSkill: {fileID: 11400000, guid: 461870ac9720e174fad95d6bdb3bfd88, type: 2}
+  orbitPrefab: {fileID: 7256699366500033320, guid: c0c9ed287eb458d4297c292eefd9d784, type: 3}

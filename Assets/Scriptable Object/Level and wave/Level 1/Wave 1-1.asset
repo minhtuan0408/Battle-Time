@@ -16,9 +16,9 @@ MonoBehaviour:
   - prefab: {fileID: 3520123429945364528, guid: 0a4df523fd7c68a43a03ad0239b01f44, type: 3}
     weight: 1
   spawnType: 0
-  totalSpawnCount: 30
-  spawnInterval: 0
-  spawnPerBatch: 3
+  totalSpawnCount: 15
+  spawnInterval: 3
+  spawnPerBatch: 1
   hasBoss: 0
   bossPrefab: []
   bossSpawnAtCount: 0

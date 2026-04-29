@@ -9,7 +9,9 @@ public class AoERandomSkill : BaseSkill
 	int rockCount;
 	public AoESkillSO dataSkill;
 	public LayerMask enemyLayer;
+	[SerializeField] private AoEEffect effectPrefab;
 
+	private List<AoEEffect> pool = new List<AoEEffect>();
 	protected override void Activate()
 	{
 		if (targetFinder == null) return;
@@ -28,17 +30,28 @@ public class AoERandomSkill : BaseSkill
 
 	void SpawnRock(Vector2 pos)
 	{
-		AoEEffect effect = ObjectPool.Instance.Spawn(key, pos, Quaternion.identity) as AoEEffect;
+		AoEEffect effect = GetEffect();
 
-		if (effect != null)
-		{
-			effect.Init(pos, damage, radius);
-		}
+		effect.transform.position = pos;
+		effect.gameObject.SetActive(true);
+
+		effect.Init(pos, damage, radius);
 	}
 
 
+	AoEEffect GetEffect()
+	{
+		for (int i = 0; i < pool.Count; i++)
+		{
+			if (!pool[i].gameObject.activeInHierarchy)
+				return pool[i];
+		}
 
-
+		// không có → tạo mới
+		AoEEffect newEffect = Instantiate(effectPrefab, transform);
+		pool.Add(newEffect);
+		return newEffect;
+	}
 
 	public override void ApplyLevelData()
 	{

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class GameFlowManager : MonoBehaviour
 {
-
+	public static GameFlowManager instance;
 	public float startDelay = 5f;
 
 	public LevelData levelData;
@@ -11,10 +11,17 @@ public class GameFlowManager : MonoBehaviour
 	public WaveManager waveManager;
 
 	public RewardPanel rewardPanel;
+
+	int TotalDiamond;
+	int TotalGold;
+
+	int TotalTicket;
 	void Start()
 	{
 		waveManager.onAllWavesCleared += OnGameWin;
 		StartCoroutine(StartGameRoutine());
+
+		instance = this;
 	}
 
 	IEnumerator StartGameRoutine()
@@ -33,5 +40,24 @@ public class GameFlowManager : MonoBehaviour
 		levelPanel.SetActive(false);
 
 		rewardPanel.Show();
+	}
+
+	public void AddDiamonds(int value)
+	{
+		TotalDiamond += value;
+	}
+	public void AddGolds(int value)
+	{
+		TotalGold += value;
+	}
+
+	public void AddTickets(int value)
+	{
+		if (TotalTicket > 9) { 
+			TotalTicket =9;
+			return;
+		}
+		else 
+			TotalTicket += value;
 	}
 }

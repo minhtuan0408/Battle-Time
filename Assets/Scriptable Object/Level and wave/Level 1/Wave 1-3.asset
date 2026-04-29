@@ -17,8 +17,8 @@ MonoBehaviour:
     weight: 1
   spawnType: 0
   totalSpawnCount: 50
-  spawnInterval: 0
-  spawnPerBatch: 1
+  spawnInterval: 6
+  spawnPerBatch: 5
   hasBoss: 1
   bossPrefab:
   - {fileID: 4723455328556876107, guid: 5d2fdac2ab072a0479431d0044ca32e5, type: 3}

@@ -1,32 +1,49 @@
 ﻿using UnityEngine;
 
-public class AoEEffect : Poolable
+public class AoEEffect : MonoBehaviour
 {
-	protected Vector2 position;
-	protected int damage;
 	protected float radius;
-	public LayerMask enemyLayer;
+	protected int damage;
 
+	protected float lifeTime = 0.5f;
+	protected float timer;
+
+	public LayerMask LayerMask;
 	public virtual void Init(Vector2 pos, int damage, float radius)
 	{
-		this.position = pos;
+		transform.position = pos;
 		this.damage = damage;
 		this.radius = radius;
 
-		transform.position = pos;
-
-		OnSpawn();
+		timer = 0f;
 	}
 
-
-
-	protected void DoDamage()
+	protected virtual void Update()
 	{
-		Collider2D[] hits = Physics2D.OverlapCircleAll(position, radius, enemyLayer);
+		timer += Time.deltaTime;
 
-		foreach (var hit in hits)
+		if (timer >= lifeTime)
 		{
-			hit.SendMessage("TakeDamage", damage, SendMessageOptions.DontRequireReceiver);
+			ReturnToPool();
 		}
+	}
+
+	protected virtual void DealDamage()
+	{
+		Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, radius, LayerMask);
+
+		foreach (var col in hits)
+		{
+			IDamageable target = col.GetComponent<IDamageable>();
+			if (target != null)
+			{
+				target.TakeDamage(damage);
+			}
+		}
+	}
+
+	protected void ReturnToPool()
+	{
+		gameObject.SetActive(false);
 	}
 }

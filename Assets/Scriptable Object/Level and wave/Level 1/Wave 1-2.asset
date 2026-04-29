@@ -19,7 +19,7 @@ MonoBehaviour:
     weight: 0.2
   spawnType: 1
   totalSpawnCount: 100
-  spawnInterval: 0
+  spawnInterval: 10
   spawnPerBatch: 10
   hasBoss: 0
   bossPrefab: []

@@ -21,18 +21,16 @@ public abstract class BaseEnemy : MonoBehaviour, IDamageable
 	float flipThreshold = 0.1f;
 	public LayerMask enemyLayer;
 
-	public ParticleSystem ParticleSystem;
 	public Action onDeath;
+	private bool isDead = false;
 	protected virtual void Awake()
 	{
 		mpb = new MaterialPropertyBlock();
 	}
-
 	protected virtual void Update()
 	{
 		Move();
 	}
-
 	protected virtual void Move()
 	{
 		if (target == null) return;
@@ -123,13 +121,9 @@ public abstract class BaseEnemy : MonoBehaviour, IDamageable
 
 	IEnumerator DieRoutine()
 	{
-		if (ParticleSystem != null)
-		{
-			ParticleSystem.transform.parent = null; // tách khỏi object để không bị destroy
-			ParticleSystem.Play();
 
-			yield return new WaitUntil(() => !ParticleSystem.IsAlive(true));
-		}
+		yield return null;
+
 
 		Destroy(gameObject);
 	}

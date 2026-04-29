@@ -8,7 +8,7 @@ public class Orb : MonoBehaviour
 	[HideInInspector] public Transform target;
 
 	float speed;
-	float accel = 20f;
+	float accel = 100f;
 
 	private void OnEnable()
 	{

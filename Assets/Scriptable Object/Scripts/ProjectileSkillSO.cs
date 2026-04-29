@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class ProjectileSkillSO : SkillSO
 {
 	public List<ProjectileSkillSOLevel> info;
-	
 	public override string GetDescription(int level)
 	{
 		var data = info.Find(x => x.level == level);

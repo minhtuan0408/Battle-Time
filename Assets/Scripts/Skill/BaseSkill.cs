@@ -4,8 +4,8 @@ using UnityEngine;
 public abstract class BaseSkill : MonoBehaviour
 {
 	public string key;
-	public int level = 1;
-	public int maxLevel = 2;
+	protected int level = 0;
+	public int maxLevel = 5;
 	[Header("Cooldown")]
 	public float cooldown = 1f;
 	protected float cooldownTimer;

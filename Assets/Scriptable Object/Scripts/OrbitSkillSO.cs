@@ -16,7 +16,7 @@ public class OrbitSkillSO : SkillSO
 public class OrbitSkillSOLevel
 {
 	public int level;
-	public float damage;
+	public int damage;
 	public float cooldown;
 
 	public float radius;

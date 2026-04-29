@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class ProjectileSkill : BaseSkill
 {
-	[Header("Projectile")]
-	public GameObject projectilePrefab;
+	[SerializeField] private Projectile projectilePrefab;
+	private List<Projectile> pool = new List<Projectile>();
 
 	[Header("Stats")]
 	int damage;
@@ -28,7 +28,7 @@ public class ProjectileSkill : BaseSkill
 	{
 		if (targetFinder == null) return;
 
-		Vector2 mainDir = targetFinder.GetDirectionToNearestTarget(transform.position, range);
+		Vector2 mainDir = targetFinder.GetDirectionToNearestTarget(transform.position);
 
 		for (int i = 0; i < count; i++)
 		{
@@ -42,16 +42,16 @@ public class ProjectileSkill : BaseSkill
 
 	void SpawnProjectile(Vector2 dir)
 	{
-		Projectile proj = ObjectPool.Instance.Spawn(key, transform.position, Quaternion.identity) as Projectile; 
-		if (proj != null)
-		{
-			proj.Init(dir, speed, damage, range, transform);
+		Projectile proj = GetProjectile();
 
-			float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-			proj.transform.rotation = Quaternion.Euler(0, 0, angle);
-		}
+		proj.transform.position = transform.position;
+		proj.gameObject.SetActive(true);
+
+		proj.Init(dir, speed, damage, range, transform);
+
+		float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+		proj.transform.rotation = Quaternion.Euler(0, 0, angle);
 	}
-
 	Vector2 RotateVector(Vector2 v, float angle)
 	{
 		float rad = angle * Mathf.Deg2Rad;
@@ -62,5 +62,20 @@ public class ProjectileSkill : BaseSkill
 			v.x * cos - v.y * sin,
 			v.x * sin + v.y * cos
 		).normalized;
+	}
+
+	Projectile GetProjectile()
+	{
+		// tìm object đang inactive
+		for (int i = 0; i < pool.Count; i++)
+		{
+			if (!pool[i].gameObject.activeInHierarchy)
+			{
+				return pool[i];
+			}
+		}
+		Projectile newProj = Instantiate(projectilePrefab);
+		pool.Add(newProj);
+		return newProj;
 	}
 }

@@ -5,12 +5,12 @@ public class TargetFinder : MonoBehaviour
 {
 	public LayerMask enemyLayer;
 	private PlayerMovement playerMovement;
-
+	public float radius;
 	private void Awake()
 	{
 		playerMovement = GetComponentInParent<PlayerMovement>();
 	}
-	public Vector2 GetDirectionToNearestTarget(Vector2 position, float radius)
+	public Vector2 GetDirectionToNearestTarget(Vector2 position)
 	{
 		Collider2D[] hits = Physics2D.OverlapCircleAll(position, radius, enemyLayer);
 

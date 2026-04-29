@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,7 +8,7 @@ public class PlayerCombat : MonoBehaviour
 
 	public List<BaseSkill> skills = new List<BaseSkill>();
 	public List<SkillInstance> ownedSkills = new List<SkillInstance>();
-
+	public static event Action<List<SkillInstance>> OnSkillsChanged;
 	public SkillInstance GetSkill(SkillSO skill)
 	{
 		return ownedSkills.Find(s => s.data == skill);
@@ -49,7 +50,7 @@ public class PlayerCombat : MonoBehaviour
 			skill.SetUpSkill(TargetFinder, Stats);
 			skill.LevelUp();
 		}
-
+		OnSkillsChanged?.Invoke(ownedSkills);
 
 	}
 }

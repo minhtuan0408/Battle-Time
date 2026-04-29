@@ -1,25 +1,34 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class RockEffect : AoEEffect
 {
 	public float delay = 0.3f;
 
-	public override void OnSpawn()
+	private bool hasExploded = false;
+
+	public override void Init(Vector2 pos, int damage, float radius)
 	{
-		StartCoroutine(Fall());
+		base.Init(pos, damage, radius);
+
+		timer = 0f;
+		hasExploded = false;
 	}
 
-	IEnumerator Fall()
+	protected override void Update()
 	{
-		// delay trước khi rơi (telegraph)
-		yield return new WaitForSeconds(delay);
+		timer += Time.deltaTime;
 
+		// 👉 chờ delay rồi mới nổ
+		if (!hasExploded && timer >= delay)
+		{
+			DealDamage();
+			hasExploded = true;
+		}
 
-
-		DoDamage();
-
-		// tắt object (pool)
-		gameObject.SetActive(false);
+		// 👉 sau khi nổ thêm chút rồi biến mất
+		if (hasExploded && timer >= delay + lifeTime)
+		{
+			ReturnToPool();
+		}
 	}
 }
