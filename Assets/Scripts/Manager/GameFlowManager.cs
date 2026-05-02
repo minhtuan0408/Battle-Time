@@ -4,6 +4,7 @@ using UnityEngine;
 public class GameFlowManager : MonoBehaviour
 {
 	public static GameFlowManager instance;
+	public GameObject Player;
 	public float startDelay = 5f;
 
 	public LevelData levelData;

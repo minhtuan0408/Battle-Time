@@ -24,6 +24,7 @@ public class LoadingPanel : MonoBehaviour
 	IEnumerator LoadSceneRoutine(string sceneName)
 	{
 		panel.SetActive(true);
+		loadingSlider.gameObject.SetActive(true);
 		loadingSlider.value = 0;
 		Text_Value.text = "0%";
 

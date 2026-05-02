@@ -17,7 +17,6 @@ public abstract class BaseSkill : MonoBehaviour
 	protected virtual void Start()
 	{
 		cooldownTimer = cooldown;
-		Debug.Log(level);
 	}
 
 	public void SetUpSkill(TargetFinder targetFinder, PlayerStats stats) 

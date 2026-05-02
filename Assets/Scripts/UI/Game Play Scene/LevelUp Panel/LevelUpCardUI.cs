@@ -21,12 +21,12 @@ public class LevelUpCardUI : MonoBehaviour, IPointerClickHandler
 	{
 		if (data != null)
 		{
-			Debug.Log("Chọn skill: " + data.skillName);
+			//Debug.Log("Chọn skill: " + data.skillName);
 			onClick?.Invoke(data);
 		}
 		else
 		{
-			Debug.Log("Chọn reward");
+			//Debug.Log("Chọn reward");
 			onClickReward?.Invoke(null); // hoặc truyền reward nếu bạn lưu lại
 		}
 	}

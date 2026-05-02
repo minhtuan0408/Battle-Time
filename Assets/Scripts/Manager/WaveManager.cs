@@ -43,7 +43,7 @@ public class WaveManager : MonoBehaviour
 			yield return new WaitForSeconds(2f);
 		}
 
-		Debug.Log("All waves done!");
+		//Debug.Log("All waves done!");
 		onAllWavesCleared?.Invoke();
 	}
 
